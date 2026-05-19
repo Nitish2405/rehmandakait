@@ -1,0 +1,15 @@
+module tbsrff;
+reg s,r,clk;
+wire q,qbar;
+srff uut (.q(q),.qbar(qbar),.s(s),.r(r),.clk(clk));
+initial begin
+clk=0;s=0;r=0;
+#10 s=1;r=0;
+#10 s=0;r=0;
+#10 s=0;r=1;
+#10 s=1;r=1;
+#10 s=0;r=0;
+#50 $finish;
+end
+always #5 clk=~clk;
+endmodule
