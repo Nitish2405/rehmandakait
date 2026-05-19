@@ -1,0 +1,19 @@
+module tbjkff;
+reg clk=0;
+reg j=0;
+reg k=0;
+reg reset=0;
+wire q,qnot;
+jkff dut (reset,clk,j,k,q,qnot);
+initial 
+begin
+#10 j=1'b0;k=1'b0;
+#10 j=1'b1;k=1'b0;
+#10 j=1'b0;k=1'b1;
+#10 j=1'b1;k=1'b1;
+#10 j=1'b1;k=1'b1;
+#25 reset=1'b1;
+#25 $finish;
+end
+always #1 clk=~clk;
+endmodule
